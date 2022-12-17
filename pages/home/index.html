@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/globalStyles.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Imports -->
+    <link rel="stylesheet" href="../../styles/reset.css">
+    <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="../../styles/texts.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../pages/home/index.css">
+    <!-- FavIcon -->
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <title>Webwomen</title>
     <meta
       name="description"
@@ -14,10 +24,68 @@
       Ou até mesmo oportunidades para atender eventos de tecnologia no Brasil 
       e ao redor do mundo?"
     />
+    <!-- JavaScript -->
+    <script defer type="module" src="../../pages/home/index.js"></script>
 </head>
 <body>
-    <main></main>
-    <script src="jobsData.js"></script>
-    <script src="index.js"></script>
+    <header class="header__figure">
+      <section class="container header__section">
+        <img class="header__logo" src="../../assets/img/logo.svg" alt="logo">
+        <div>
+          <h1 class="header__title--1">Lugar de mulher é onde ela quiser!</h1>
+          <p class="header__text--1">Está procurando oportunidades de estágio, emprego ou bolsas de estudo? 
+            Ou até mesmo oportunidades para atender eventos de tecnologia no Brasil e ao redor do mundo?
+          </p>
+          <h5 class="header__title--5">Confere aqui embaixo o que temos pra você!</h5>
+        </div>
+        <a class="header__button" href="#Vagas">Ir para seção das vagas</a>
+      </section>
+    </header>
+
+    <main class="container">
+      <section class="main__section">
+        <h4 id="Vagas" class="main__title--4">Vagas</h4>
+        <ul class="job__list">
+          <!-- LI Estática -->
+          <!-- <li class="job__card">
+            <div class="job__header">
+              <h4 class="main__title--4">Job Title</h4>
+              <div class="job__company">
+                <p class="main__text--3">Enterprise</p>
+                <p class="main__text--3">Location</p>
+              </div>
+            </div>
+            <p class="main__text--2 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi pariatur ab ipsum optio? Dolorum deserunt molestias mollitia. Obcaecati aperiam, soluta libero voluptatibus facere dolorum qui asperiores, maxime nesciunt dicta sunt.</p>
+            <div class="job__footer">
+              <div>
+                <p class="job__modality main__text--3">Job Modality</p>
+                <p class="job__modality main__text--3">Job Modality</p>
+              </div>
+              <button class="job__button">Candidatar</button>
+            </div>
+          </li> -->
+
+        </ul>
+      </section>
+
+      <aside class="main__aside">
+        <h4 class="main__title--4">Vagas Selecionadas</h4>
+        <!-- Este parágrafo deve sumir caso haja LIs -->
+        <p id="warning" class="main__text--2">Você ainda não aplicou para nenhuma vaga</p>
+        <ul id="selected_job_list">
+          <!-- LI Estática -->
+          <!-- <li class="selected_job_card">
+            <div class="aside__card_header">
+              <h5 class="main__title--5">Pessoa desenvolvedora front-end - React JS</h5>
+              <button class="aside__card_button"></button>
+            </div>
+            <div class="job__company">
+              <p class="main__text--3">Enterprise</p>
+              <p class="main__text--3">Location</p>
+            </div>
+          </li> -->
+        </ul>
+      </aside>
+    </main>
 </body>
 </html>

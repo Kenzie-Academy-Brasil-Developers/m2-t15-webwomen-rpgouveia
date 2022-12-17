@@ -1,1 +1,130 @@
-/* Desenvolva sua estilização aqui... */
+.header__figure {
+    background: rgba(0, 0, 0, 0.7) url(../../assets/img/bg-image.png);
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    height: 816px;
+    width: 100vw;
+    max-width: 100%;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.header__section {
+    padding: 6.25rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.header__logo {
+    height: 24px;
+    width: 194px;
+    object-fit: cover;
+}
+
+.header__section > div {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.main__section {
+    padding-top: 43px;
+    padding-bottom: 36px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+.job__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.job__card {
+    background-color: var(--color-grey-6);
+    padding: 38px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--radius-default);
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.job__header {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.job__company {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.job__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.job__footer > div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.job__modality {
+    width: fit-content;
+    padding: 4px 12px;
+    border-radius: var(--radius-default);
+    background-color: var(--color-grey-3);
+}
+
+.main__aside {
+    background-color: var(--color-grey-6);
+    border-radius: var(--radius-default);
+    width: 100%;
+    max-width: 550px;
+    margin-bottom: 43px;
+}
+
+.main__aside > h4 {
+    padding: 32px;
+}
+
+.main__aside > p {
+    padding: 32px;
+}
+
+.selected_job_card {
+    padding: 32px 15px 32px 28px;
+    background-color: var(--color-grey-6);
+    border: 2px solid var(--color-grey-5);
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.selected_job_card:hover {
+    background-color: var(--color-grey-4);
+}
+
+.aside__card_header {
+    display: flex;
+    flex-direction: row;
+    gap: 26px;
+}
