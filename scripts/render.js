@@ -1,4 +1,5 @@
 import { applyButton, removeButton } from "../pages/home/index.js"
+import { jobsList } from "./jobsData.js"
 
 function renderJobList (array) {
     const ul = document.querySelector('.job__list')
@@ -67,10 +68,17 @@ function renderJobCard (object) {
 }
 
 function renderSelectedJobList () {
+    const warning = document.getElementById('warning')
     const selectedJobList = JSON.parse(localStorage.getItem('selectedJobList'))
     const ul = document.querySelector('#selected_job_list')
     ul.innerHTML = ''
-
+    
+    if (jobsList == []) {
+        warning.style.display = 'flex'
+    } else {
+        warning.style.display = 'none'
+    }
+    
     selectedJobList.forEach(object => {
         const li = renderSelectedJobCard(object)
         ul.appendChild(li)

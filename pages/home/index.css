@@ -126,5 +126,44 @@
 .aside__card_header {
     display: flex;
     flex-direction: row;
-    gap: 26px;
+    justify-content: space-between;
+}
+
+@media (max-width: 320px) {
+    .job__footer > div {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 530px) {
+    .job__footer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1023px) {
+    .main__section {
+        width: 61%;
+    }
+    .main__aside {
+        height: fit-content;
+        width: 35%;
+        margin-top: 120px;
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1439px) {
+    .main__section {
+        width: 50%;
+    }
+    .main__aside {
+        width: 45%;
+    }
 }

@@ -1,4 +1,4 @@
-import { jobsData, jobsList } from "./jobsData.js"
+import { jobsData, jobsList } from "../../scripts/jobsData.js"
 import { renderJobList, renderSelectedJobList } from "../../scripts/render.js"
 
 renderJobList(jobsData)
@@ -8,10 +8,8 @@ export function applyButton () {
 
     buttons.forEach(button => {
         button.addEventListener('click', (event) => {
-            console.log(event.target)
-            // console.log(event.target.innerText, `job_card_id: ${event.target.id}`)
             if (event.target.innerText === 'Candidatar') {
-                let foundJob = jobsData.find((object) => {
+                let foundJob = jobsData.find(object => {
                     return object.id == event.target.id
                 })
                 if (!jobsList.includes(foundJob)) {
@@ -21,7 +19,7 @@ export function applyButton () {
                 renderSelectedJobList()
                 event.target.innerText = 'Remover Candidatura'
             } else {
-                let foundJob = jobsData.find((object) => {
+                let foundJob = jobsData.find(object => {
                     return object.id == event.target.id
                 })
                 if (jobsList.includes(foundJob)) {
