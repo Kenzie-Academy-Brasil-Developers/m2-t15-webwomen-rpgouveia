@@ -72,8 +72,7 @@ function renderSelectedJobList () {
     const selectedJobList = JSON.parse(localStorage.getItem('selectedJobList'))
     const ul = document.querySelector('#selected_job_list')
     ul.innerHTML = ''
-    
-    if (jobsList == []) {
+    if (jobsList.length == 0) {
         warning.style.display = 'flex'
     } else {
         warning.style.display = 'none'
