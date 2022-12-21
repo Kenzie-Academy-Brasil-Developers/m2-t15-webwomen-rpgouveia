@@ -1,5 +1,4 @@
-import { applyButton, removeButton } from "../pages/home/index.js"
-import { jobsList } from "./jobsData.js"
+import { applyOrRemove } from "../pages/home/index.js"
 
 function renderJobList (array) {
     const ul = document.querySelector('.job__list')
@@ -9,7 +8,6 @@ function renderJobList (array) {
         const li = renderJobCard(object)
         ul.appendChild(li)
     })
-    applyButton()
 }
 
 function renderJobCard (object) {
@@ -57,7 +55,18 @@ function renderJobCard (object) {
     const jobCardButton = document.createElement('button')
     jobCardButton.classList.add('job__button')
     jobCardButton.setAttribute('id', id)
-    jobCardButton.innerText = 'Candidatar'
+    
+    // Collecting list from local storage
+    const list = JSON.parse(localStorage.getItem('list')) || []
+    // Checking if the job card exists in the list to render the button
+    const foundJob = list.find(job => job.id == id)
+    if (foundJob) {
+        jobCardButton.innerText = 'Remover Candidatura'
+    } else {
+        jobCardButton.innerText = 'Candidatar'
+    }
+    // Creating event for each button
+    jobCardButton.addEventListener('click', applyOrRemove)
 
     jobCardModalitiesContainer.append(jobCardModality1, jobCardModality2)
     jobCardFooter.append(jobCardModalitiesContainer, jobCardButton)
@@ -69,20 +78,20 @@ function renderJobCard (object) {
 
 function renderSelectedJobList () {
     const warning = document.getElementById('warning')
-    const selectedJobList = JSON.parse(localStorage.getItem('selectedJobList'))
+    const list = JSON.parse(localStorage.getItem('list')) || []
     const ul = document.querySelector('#selected_job_list')
     ul.innerHTML = ''
-    if (jobsList.length == 0) {
+
+    if (list.length == 0) {
         warning.style.display = 'flex'
     } else {
         warning.style.display = 'none'
     }
     
-    selectedJobList.forEach(object => {
+    list.forEach(object => {
         const li = renderSelectedJobCard(object)
         ul.appendChild(li)
     })
-    removeButton()
 }
 
 function renderSelectedJobCard (object) {
@@ -113,6 +122,9 @@ function renderSelectedJobCard (object) {
     const jobCardLocation = document.createElement('p')
     jobCardLocation.classList.add('main__text--3')
     jobCardLocation.innerText = location
+
+    // Creating event for each button
+    asideCardButton.addEventListener('click', applyOrRemove)
 
     jobCardCompanyDetails.append(jobCardEnterprise, jobCardLocation)
     asideCardHeader.append(asideCardTitle, asideCardButton)

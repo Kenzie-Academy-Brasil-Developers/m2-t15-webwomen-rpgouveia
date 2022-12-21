@@ -1,5 +1,3 @@
-export const jobsList = []
-
 export const jobsData = [
   {
     id: 0,

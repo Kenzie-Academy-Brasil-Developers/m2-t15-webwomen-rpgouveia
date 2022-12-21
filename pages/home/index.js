@@ -1,59 +1,24 @@
-import { jobsData, jobsList } from "../../scripts/jobsData.js"
+import { jobsData } from "../../scripts/jobsData.js"
 import { renderJobList, renderSelectedJobList } from "../../scripts/render.js"
 
 renderJobList(jobsData)
+renderSelectedJobList()
 
-export function applyButton () {
-    const buttons = document.querySelectorAll('.job__button')
+export function applyOrRemove (event) {
+    const id = event.target.id
+    const list = JSON.parse(localStorage.getItem('list')) || []
+    const foundJob = list.find(job => job.id == id)
 
-    buttons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            if (event.target.innerText === 'Candidatar') {
-                let foundJob = jobsData.find(object => {
-                    return object.id == event.target.id
-                })
-                if (!jobsList.includes(foundJob)) {
-                    jobsList.push(foundJob)
-                    localStorage.setItem('selectedJobList', JSON.stringify(jobsList))
-                }
-                renderSelectedJobList()
-                event.target.innerText = 'Remover Candidatura'
-            } else {
-                let foundJob = jobsData.find(object => {
-                    return object.id == event.target.id
-                })
-                if (jobsList.includes(foundJob)) {
-                    const foundIndex = jobsList.findIndex(object => object.id == event.target.id)
-                    jobsList.splice(foundIndex, 1)
-                    localStorage.removeItem('selectedJobList')
-                    localStorage.setItem('selectedJobList', JSON.stringify(jobsList))
-                }
-                renderSelectedJobList()
-                event.target.innerText = 'Candidatar'
-            }
-        })
-    })
-}
-
-export function removeButton () {
-    const applyButtons = [...document.querySelectorAll('.job__button')]
-    const removeButtons = document.querySelectorAll('.aside__card_button')
-
-    removeButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            let foundJob = jobsData.find(object => {
-                return object.id == event.target.id
-            })
-
-            if (jobsList.includes(foundJob)) {
-                const foundIndex = jobsList.findIndex(object => object.id == event.target.id)
-                jobsList.splice(foundIndex, 1)
-                localStorage.removeItem('selectedJobList')
-                localStorage.setItem('selectedJobList', JSON.stringify(jobsList))
-            }
-            renderSelectedJobList()
-            let foundApplyButton = applyButtons.find(object => object.id == event.target.id)
-            foundApplyButton.innerText = 'Candidatar'
-        })
-    })
+    if (foundJob) {
+        const foundIndex = list.findIndex(job => job.id == id)
+        list.splice(foundIndex, 1)
+    } else {
+        const job = jobsData.find(job => job.id == id)
+        list.push(job)
+    }
+    
+    localStorage.setItem('list', JSON.stringify(list))
+    renderSelectedJobList()
+    // Calling again to update button text
+    renderJobList(jobsData)
 }
